@@ -5,6 +5,7 @@ const bottomTextInput = document.querySelector("#bottomTextInput");
 
 let image;
 
+
 imageFileInput.addEventListener("change", (e) => {
     const imageDataUrl = URL.createObjectURL(e.target.files[0]);
 
@@ -24,6 +25,7 @@ imageFileInput.addEventListener("change", (e) => {
         { once: true }
     );
 });
+
 
 topTextInput.addEventListener("change", () => {
     updateMemeCanvas(canvas, image, topTextInput.value, bottomTextInput.value);
@@ -62,4 +64,13 @@ function updateMemeCanvas(canvas, image, topText, bottomText) {
     ctx.textBaseline = "bottom";
     ctx.strokeText(bottomText, width / 2, height - yOffset);
     ctx.fillText(bottomText, width / 2, height - yOffset);
+}
+
+function download_image() {
+    var canvas = document.getElementById("meme");
+    image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+    var link = document.createElement('a');
+    link.download = "my-image.png";
+    link.href = image;
+    link.click();
 }
