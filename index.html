@@ -6,20 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="index.css" />
-    <script src="index.js"></script>
+    <!-- Note for myself : use 'defer' here or .onload function for
+    imageFileInput event listener otherwise js will load sooner than the markup
+    & will cause issue  -->
+    <script defer src="index.js"></script>
   </head>
   <body>
+    <div class="heading" height = >
+       Meme Generator
+      
+    </div>
+    <!-- <hr /> -->
     <div class="meme-generator">
-      <label>Select an Image</label>
-      <input type="file" id="imageFileInput" />
+      <label for = "imageFileInput" accept="image/*" required class="dropContainer">
+        <span class="dropTitle" style="text-align: center;">Drop files here</span>
+        <br> 
+        <span style="text-align: center;">or</span><br>
+        <!-- orSelect an Image -->
+        <input type="file" id="imageFileInput" />
+      </label>
+      
 
       <label>Top Text</label>
-      <input type="text" id="topTextInput" />
+      <input type="text" id="topTextInput" placeholder="Enter top text" />
 
       <label>Bottom Text</label>
-      <input type="text" id="bottomTextInput" />
+      <input type="text" id="bottomTextInput" placeholder="Enter bottom text" />
 
       <canvas id="meme"></canvas>
+
+      <button onclick="download_image()">Download</button>
     </div>
   </body>
 </html>
